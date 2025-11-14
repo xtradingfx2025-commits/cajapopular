@@ -1,0 +1,99 @@
+services:
+  lider-qa-frontend:
+    container_name: lider-qa-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      lider-qa-backend:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  lider-qa-backend:
+    container_name: lider-qa-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - AMQP_URL=amqp://lider-qa-rabbitmq
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      lider-qa-rabbitmq:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3001/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  lider-qa-rabbitmq:
+    container_name: lider-qa-rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"  # AMQP protocol port
+      - "15672:15672"  # Management UI port
+    volumes:
+      - lider-qa-rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  lider-qa-buro-credito:
+    container_name: lider-qa-buro-credito
+    build:
+      context: ./buro-credito
+      dockerfile: Dockerfile
+    environment:
+      - AMQP_URL=amqp://lider-qa-rabbitmq
+    volumes:
+      - ./buro-credito:/app
+      - /app/node_modules
+    depends_on:
+      lider-qa-rabbitmq:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "sh", "-c", "ps aux | grep 'node' | grep -v grep"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  lider-qa-rabbitmq_data:
