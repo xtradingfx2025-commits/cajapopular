@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-WORKDIR /src/app
+WORKDIR /src
 
 # Copy package files
 COPY package*.json ./
