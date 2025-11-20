@@ -4,8 +4,8 @@ FROM node:20-alpine
 RUN apk add --no-cache curl
 
 
-WORKDIR /app
-RUN mkdir -p /app/src 
+WORKDIR /app/src
+#RUN mkdir -p /app/src 
 # && chmod -R g+rwX ./src
 
 # Copy package files
