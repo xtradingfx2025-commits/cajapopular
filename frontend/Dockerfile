@@ -9,7 +9,7 @@ RUN apk add --no-cache curl \
     ca-certificates \
     ttf-freefont
 
-WORKDIR /app
+WORKDIR /app/src/
 
 # Configure Playwright to use system Chromium
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
