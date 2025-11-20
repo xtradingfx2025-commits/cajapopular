@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Toaster } from "@/components/ui/sonner";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "/src/components/ui/card";
+import { Input } from "/src/components/ui/input";
+import { Label } from "/src/components/ui/label";
+import { Toaster } from "/src/components/ui/sonner";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
+import { Button } from "/src/components/ui/button";
 
 export default function Home() {
   const router = useRouter();
