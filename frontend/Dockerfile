@@ -20,6 +20,7 @@ ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
 
 # Copy package files
 COPY package.json package-lock.json* ./
+COPY src/*.js ./src/.
 
 # Install dependencies
 RUN npm install
