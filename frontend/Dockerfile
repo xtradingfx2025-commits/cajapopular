@@ -19,7 +19,8 @@ COPY /src/app/. /src/app
 RUN mkdir -p /src/components/.next
 COPY /src/components/. /src/components
 
-
+RUN mkdir -p /src/lib/.next
+COPY /src/lib/. /src/lib
 
 
 
