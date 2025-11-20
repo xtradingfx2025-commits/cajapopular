@@ -10,7 +10,7 @@ RUN mkdir -p /app/src
 
 # Copy package files
 COPY package*.json ./
-COPY src/*.js ./src/app
+COPY src/*.js ./src/.
 
 
 
