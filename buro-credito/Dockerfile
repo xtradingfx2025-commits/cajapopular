@@ -1,12 +1,12 @@
 FROM node:20-alpine
 
-WORKDIR /app
+WORKDIR /src
 #RUN mkdir -p /app/src 
 # && chmod -R g+rwX ./src
 
 # Copy package files
 COPY package*.json ./
-COPY src/*.js ./app/src/.
+COPY src/*.js ./src/.
 
 # Install dependencies
 RUN npm install
