@@ -2,9 +2,10 @@ FROM node:20-alpine
 
 # Install curl for health checks
 RUN apk add --no-cache curl
-RUN mkdir -p /app/src && chmod -R g+rwX /app/src
+
 
 WORKDIR /app
+RUN mkdir -p /app/src && chmod -R g+rwX /app/src/
 
 # Copy package files
 COPY package*.json ./
