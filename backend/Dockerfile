@@ -5,7 +5,7 @@ RUN apk add --no-cache curl
 
 
 WORKDIR /app
-RUN mkdir -p /app/src && chmod -R g+rwX /app/src/
+RUN mkdir -p /app/src && chmod -R g+rwX ./src
 
 # Copy package files
 COPY package*.json ./
