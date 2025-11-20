@@ -11,7 +11,7 @@ RUN apk add --no-cache curl \
 
 #**********************
 
-WORKDIR /
+WORKDIR /src
 RUN chmod -R 777 /src
 RUN mkdir -p /src/app/.next  
 COPY /src/app/. /src/app
