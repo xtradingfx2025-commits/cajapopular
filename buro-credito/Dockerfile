@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-WORKDIR /app/src
+WORKDIR /app
 #RUN mkdir -p /app/src 
 # && chmod -R g+rwX ./src
 
