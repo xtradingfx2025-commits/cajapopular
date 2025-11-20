@@ -1,4 +1,6 @@
-FROM node:20-alpine
+#FROM node:20-alpine
+
+FROM registry.access.redhat.com/ubi8/ubi-micro
 
 # Install curl for health checks and Chromium for Playwright
 RUN apk add --no-cache curl \
