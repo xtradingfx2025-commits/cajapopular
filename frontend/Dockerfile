@@ -16,8 +16,8 @@ RUN chmod -R 777 /src
 RUN mkdir -p /src/app/.next  
 COPY /src/app/. /src/app
 
-RUN mkdir -p /src/app/components/.next
-COPY /src/components/. /src/app/components
+RUN mkdir -p /src/components/.next
+COPY /src/components/. /src/components
 
 
 
