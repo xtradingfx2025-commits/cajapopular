@@ -15,7 +15,9 @@ WORKDIR /src
 RUN chmod -R 777 /src
 RUN mkdir -p /src/app/.next  
 COPY /src/app/. /src/app
-COPY /src/components/. /src/app
+
+RUN mkdir -p /src/app/components/.next
+COPY /src/components/. /src/app/components
 
 
 
