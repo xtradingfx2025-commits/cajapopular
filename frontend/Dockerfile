@@ -9,7 +9,7 @@ RUN apk add --no-cache curl \
     ca-certificates \
     ttf-freefont
 
-WORKDIR /app/src/
+WORKDIR /src/app
 
 # Configure Playwright to use system Chromium
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
@@ -20,7 +20,7 @@ ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
 
 # Copy package files
 COPY package.json package-lock.json* ./
-COPY src/*.js ./src/.
+#COPY src/*.js ./src/.
 
 # Install dependencies
 RUN npm install
