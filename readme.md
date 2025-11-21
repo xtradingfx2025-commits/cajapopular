@@ -4,7 +4,7 @@
 
 ### Habilitar Virtualización
 **IMPORTANTE**: Antes de instalar CRC, debes asegurarte de que la virtualización esté habilitada en tu máquina.
-
+ 
 #### Para Windows:
 1. Reinicia tu computadora y entra al BIOS/UEFI (generalmente presionando F2, F12, Delete o Esc durante el arranque)
 2. Busca la opción "Virtualization Technology" o "Intel VT-x" / "AMD-V"
